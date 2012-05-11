@@ -71,7 +71,7 @@ Scripts to be installed applies to aliases, plugins, completion, and dotfiles.
 
     export TC_INSTALL=1
 
-*NOTE*: If any of the TC_NO_* environment variables below are set, none of
+*NOTE*: If any of the TC_NO_\* environment variables below are set, none of
 the scripts from that category will get installed regardless
 if a script is passed to the TC_INSTALL prompt.
 *e.g =* 
@@ -114,4 +114,4 @@ Ignore copying over dot files.
 
 Enjoy!
 
- [1] https://github.com/justyns/remotebashrc
+  [1]: https://github.com/justyns/remotebashrc
