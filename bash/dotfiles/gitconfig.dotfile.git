@@ -1,0 +1,28 @@
+[user]
+    name = John Doe
+    email = john.doe@example.com
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+
+[color "branch"]
+    current = yellow reverse
+    local = green
+    remote = yellow
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[core]
+    excludesfile = ~/.gitignore

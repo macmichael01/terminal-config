@@ -1,0 +1,40 @@
+# -- MacOS X --
+
+.DS_Store?
+.DS_Store
+Icon?
+
+# -- TextMate --
+
+*.tmproj
+# -- XCode --
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+
+# -- SVC --
+
+.hg
+.svn
+CVS
+
+# -- Generated files --
+
+build
+*.[oa]
+*.so
+*.elc
+*.pyc
+
+# -- Database specific --
+
+*.log
+*.sqlite
+*.sql
+
+# -- temp --
+*.swp
+*~
