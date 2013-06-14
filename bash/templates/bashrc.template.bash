@@ -21,7 +21,7 @@ case $( uname -s ) in
        export LSCOLORS='ExGxcxdxCxegedabagacad'
         ;;
      Linux )
-       export LS_COLORS="di=1;;40:ln=1;;40:so=32;40:pi=33;40:ex=1;;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43" 
+       export LS_COLORS="di=1;;40:ln=1;;40:so=32;40:pi=33;40:ex=1;;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43"
         ;;
 esac
 
@@ -47,14 +47,14 @@ fi
 
 if [ "$COLOR_PROMPT" = yes ]; then
     # Remote termnal color support.
-    if ps ax | grep ^$PPID'.*sshd' &> /dev/null; then 
+    if ps ax | grep ^$PPID'.*sshd' &> /dev/null; then
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
     else
         PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \$\[\033[00m\] '
         export SUDO_PS1="${debian_chroot:+($debian_chroot)}\[\e[33;1;41m\]\u@\h:\w \$\[\033[00m\] "
     fi
     # TODO: Fix color isse
-    # if ps ax | grep ^$PPID'.*sshd' &> /dev/null; then 
+    # if ps ax | grep ^$PPID'.*sshd' &> /dev/null; then
     #     PS1='${bold_red}${debian_chroot:+($debian_chroot)}\u${reset_color}@${bold_green}\h${bold_white}:${bold_blue}\w \$${color_reset} '
     # else # Local Terminal color support.
     #     PS1='${bold_green}${debian_chroot:+($debian_chroot)}${bold_green}\u@\h${bold_white}:${bold_blue}\w \$${color_reset} '
@@ -62,7 +62,7 @@ if [ "$COLOR_PROMPT" = yes ]; then
     #     SUDO_PS1="${background_red}${bold_yellow}${debian_chroot:+($debian_chroot)}\u@\h:\w \$${color_reset} "
     # fi
 else
-    # No Color 
+    # No Color
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 
@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # COLORIZE grep
-if [ -x /usr/bin/dircolors ]; then    
+if [ -x /usr/bin/dircolors ]; then
     # Auto color grep
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -97,6 +97,7 @@ fi
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # ENVIRONMENT SETTINGS
+export PATH="/usr/local/bin:$PATH"      # So that Homebrew does not complain
 export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:~/.gem/ruby/1.8/bin   # Add rvm gems to the path
 export PATH=$PATH:$(which nginx)        # Add nginx to the path
@@ -310,7 +311,7 @@ if [ -d "$HOME/.bash/aliases/" ]
 then
   for file in `ls $HOME/.bash/aliases/*`
   do
-    if [ -f "${file}" ]; then    
+    if [ -f "${file}" ]; then
         source $file
     fi
   done
@@ -319,7 +320,7 @@ fi
 if [ -d "$HOME/.bash/plugins" ]
 then
   for file in `ls $HOME/.bash/plugins/*`
-  do 
+  do
     if [ -f "${file}" ]; then
         source $file
     fi
@@ -329,7 +330,7 @@ fi
 if [ -d "$HOME/.bash/completion/" ]
 then
   for file in `ls $HOME/.bash/completion/*`
-  do 
+  do
     if [ -f "${file}" ]; then
         source $file
     fi

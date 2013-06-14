@@ -7,7 +7,7 @@ if [ -f ${TC_DIR}/bash/colors/colors.bash ]; then
 fi
 
 echo
-echo " Available shell scripts"
+echo "${echo_bold_purple} What's Available?${echo_reset_color}"
 echo
 
 # Determines what scripts are available for useage.

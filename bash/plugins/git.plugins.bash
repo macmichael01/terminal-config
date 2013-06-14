@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-function git_remote {
+function git_remote() {
   echo "Running: git remote add origin ${GIT_HOSTING}:$1.git"
   git remote add origin $GIT_HOSTING:$1.git
 }
 
-function git_first_push {
+function git_first_push() {
   echo "Running: git push origin master:refs/heads/master"
   git push origin master:refs/heads/master
 }
@@ -29,7 +29,7 @@ function git_info() {
 
         # print all remotes and thier details
         for remote in $(git remote show); do
-            echo $remote:  
+            echo $remote:
             git remote show $remote
             echo
         done
@@ -43,10 +43,10 @@ function git_info() {
         fi
 
         # print at least 5 last log entries
-        echo 
+        echo
         echo "log:"
         git log -5 --oneline
-        echo 
+        echo
 
     else
         echo "you're currently not in a git repository"
@@ -54,7 +54,7 @@ function git_info() {
     fi
 }
 
-function git_stats {
+function git_stats() {
 # awesome work from https://github.com/esc/git-stats
 # including some modifications
 

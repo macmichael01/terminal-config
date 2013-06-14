@@ -10,15 +10,19 @@ else
 fi
 
 # PYTHON
+alias py="python"
 alias bpy="bpython"
 alias ipy="ipython"
-alias py="python"
 
-# REMOVE .pyc
-alias rmpyc='find . -name "*.pyc" -exec rm -fr {} \;'
+# Find python file(s)
+alias pyfindall='find . -name "*.py"'
+alias pyfind='find . -name "$1.py"'
 
-# CLEANUP WHITESPACE
-alias rmpyws="find . -name '*.py' -exec sed -i {} -e 's/[ \t]*$//' ';'"
+# Remove python compiled byte-code
+alias pyclean='find . -type f -name "*.py[co]" -exec rm -f \{\} \;'
 
-# SMTP DEBUG SERVER.
+# Clean Whitespace
+alias pywhitespace="find . -name '*.py' -exec sed -i {} -e 's/[ \t]*$//' ';'"
+
+# Python SMTP Debug server
 alias pysmtp='python -m smtpd -n -c DebuggingServer localhost:1025'

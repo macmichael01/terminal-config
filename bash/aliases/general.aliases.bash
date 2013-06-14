@@ -42,7 +42,6 @@ fi
 # CLEAR
 alias c='clear'
 alias k='clear'
-alias cls='clear'
 
 # EXIT TERMINAL
 alias q="exit"

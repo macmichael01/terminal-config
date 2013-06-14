@@ -7,7 +7,7 @@ function genpasswd() {
         tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
 }
 
-pass() {
+function pass() {
     # about generates random password from dictionary words
     # param optional integer length
     # param if unset, defaults to 4

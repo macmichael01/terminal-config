@@ -10,7 +10,7 @@ fi
 
 if [ -d $HOME/.bash/ ]; then
   echo
-  echo " Enabled shell scripts"
+  echo "Enabled shell scripts"
   echo
   # Determines what scripts are available for useage.
   for directory in "aliases" "plugins" "completion"
