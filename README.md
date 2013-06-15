@@ -27,6 +27,7 @@ INSTALLATION OPTIONS
 The Wizard has 3 installation types to choose from.
 
 1) Full install - Installs everything.
+
 2) Minimal install - Installs only the most basic items.
 
     .bashrc .bash_profile .profile colors.bash
