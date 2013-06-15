@@ -10,10 +10,10 @@ fi
 
 if [ -d $HOME/.bash/ ]; then
   echo
-  echo "Enabled shell scripts"
+  echo -e "${echo_bold_purple} What's Installed?${echo_reset_color}"
   echo
   # Determines what scripts are available for useage.
-  for directory in "aliases" "plugins" "completion"
+  for directory in "aliases" "plugins" "completions"
   do
     echo -e "${echo_bold_cyan} $( echo ${directory} | tr [a-z] [A-Z]) ${echo_reset_color}"
     echo

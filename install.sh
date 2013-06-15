@@ -94,12 +94,29 @@ echo -e "${echo_bold_cyan}+ ${echo_bold_white}Terminal-config Wizard${echo_bold_
 echo -e "${echo_bold_cyan}+------------------------+${echo_reset_color}"
 
 # 0) Installation wizard.
+
+echo -e "${echo_bold_yellow}Username [${echo_white}$opt_user${echo_bold_yellow}]:${echo_reset_color}"
+echo -en "${echo_green}==> ${echo_white}"
+read opt_user
+
+if [ -z "${opt_user}" ]; then
+  opt_user=$USER
+fi
+
+echo -e "${echo_bold_yellow}Email [${echo_white}${opt_user}@localhost${echo_bold_yellow}]:${echo_reset_color}"
+echo -en "${echo_green}==> ${echo_white}"
+read opt_email
+
+if [ -z "${opt_email}" ]; then
+  opt_email="${opt_user}@localhost"
+fi
+
 if [ -z "${opt_install}" ]; then
   while true; do
   echo -e "${echo_bold_yellow}Select an installation:${echo_reset_color}"
-  echo -e "${echo_white}    1) Full Install${echo_reset_color}"
-  echo -e "${echo_white}    2) Minimal Install${echo_reset_color}"
-  echo -e "${echo_white}    3) Custom Install${echo_reset_color}"
+  echo -e "${echo_white}1) Full Install${echo_reset_color}"
+  echo -e "${echo_white}2) Minimal Install${echo_reset_color}"
+  echo -e "${echo_white}3) Custom Install${echo_reset_color}"
   echo -en "${echo_green}==> ${echo_white}"
   read opt_install
   case "$opt_install" in
@@ -109,7 +126,7 @@ if [ -z "${opt_install}" ]; then
       opt_filelist=( general.aliases git.aliases hg.aliases heroku.aliases \
                      extract.plugins files.plugins network.plugins \
                      nginx.plugins history.plugins password.plugins \
-                     ssh.plugins system.plugins )
+                     ssh.plugins system.plugins .gitinore .gitconfig )
       break;;
     3)
       echo -e "${echo_bold_yellow}Show available scripts [N/y]:${echo_reset_color}"
@@ -242,7 +259,8 @@ if [ "$opt_compile" == "false" ]; then
       if [ "$opt_verbose" == "true" ]; then
         echo -e "    .${filename}${echo_reset_color}"
       fi
-      cp "${file}" "${opt_home}/.${filename}"
+      render="sed -e 's/{{ opt_email }}/${opt_email}/g' -e 's/{{ opt_user }}/${opt_user}/g' ${TC_DIR}/bash/dotfiles/${dotfile} > ${opt_home}/.${filename}"
+      eval $render
     else
       for script in ${opt_filelist[@]}; do
         if [ "${TC_DIR}/bash/dotfiles/${script}.bash" = "${file}" ]; then
@@ -250,7 +268,8 @@ if [ "$opt_compile" == "false" ]; then
           if [ "$opt_verbose" == "true" ]; then
             echo -e "    .${filename}${echo_reset_color}"
           fi
-          cp "${file}" "${opt_home}/.${script}"
+          render="sed -e 's/{{ opt_email }}/${opt_email}/g' -e 's/{{ opt_user }}/${opt_user}/g' ${TC_DIR}/bash/dotfiles/${dotfile} > ${opt_home}/.${filename}"
+          eval $render
           break
         fi
       done

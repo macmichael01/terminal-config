@@ -7,11 +7,11 @@ if [ -f ${TC_DIR}/bash/colors/colors.bash ]; then
 fi
 
 echo
-echo "${echo_bold_purple} What's Available?${echo_reset_color}"
+echo -e "${echo_bold_purple} What's Available?${echo_reset_color}"
 echo
 
 # Determines what scripts are available for useage.
-for directory in "aliases" "plugins" "completion" "dotfiles" "themes"
+for directory in "aliases" "plugins" "completions" "dotfiles" "themes"
 do
   echo -e "${echo_bold_cyan} $( echo ${directory} | tr [a-z] [A-Z]) ${echo_reset_color}"
   echo

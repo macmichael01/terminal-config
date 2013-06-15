@@ -1,6 +1,6 @@
 [user]
-    name = John Doe
-    email = john.doe@example.com
+    name = {{ opt_user }}
+    email = {{ opt_email }}
 
 [color]
     ui = auto
