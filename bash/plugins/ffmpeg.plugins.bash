@@ -81,7 +81,7 @@ function muxvideos() {
   echo -e "\n${echo_bold_blue}Starting Video Conversion: ${echo_reset_color}\n"
   eval "${MUX_FIND}" | while read mux_file ;
   do
-    eval "$(printf "muxvideo -a ${mux_audio} -v  ${mux_video} ${mux_console} ${mux_logall} ${mux_file}")"
+    eval "$(printf "muxvideo -a ${mux_audio} -v  ${mux_video} ${mux_console} ${mux_logall} '${mux_file}'")"
   done
   echo -e "\n${echo_bold_green}Video Conversion Finished! ${echo_reset_color}\n"
 }
@@ -169,6 +169,9 @@ function muxvideo() {
   mux_filename="${mux_filepath%.*}"
   mux_extension="${mux_filepath##*.}"
 
+  if [ "$mux_extension" == "$MUX_TO" ]; then
+    return
+  fi
   # Validate that the file exists.
   if [ -z "$mux_filepath" ]; then
     echo -e "  ${echo_bold_red}File does not exist${echo_reset_color}"
@@ -185,6 +188,5 @@ function muxvideo() {
     FFREPORT=file=./${filename}-$(date +%h.%m.%s).log
   fi
   echo -e "  ${echo_bold_cyan}${mux_filepath} ${echo_reset_color}==>${echo_bold_cyan} ${mux_filename}.${MUX_TO}${echo_reset_color}"
-  eval "$(printf "ffmpeg -i '${mux_filepath}' -acodec copy -vcodec copy -map ${mux_video} -map ${mux_audio} '${mux_filename}.${MUX_TO}' -nostdin ${mux_report} ${mux_verbose}")"
+  eval 'ffmpeg -i "${mux_filepath}" -acodec copy -vcodec copy -map ${mux_video} -map ${mux_audio} "${mux_filename}.${MUX_TO}" -nostdin ${mux_report} ${mux_verbose}'
 }
-
