@@ -15,6 +15,7 @@ alias f='open -a Finder '
 alias textedit='open -a TextEdit'
 alias hex='open -a "Hex Fiend"'
 alias empty="rm -fr ~/.Trash/"
+alias safaridebug="defaults write NSGlobalDomain WebKitDeveloperExtras -bool true; defaults write com.apple.safari IncludeDebugMenu -bool true"
 
 if [ -s /usr/bin/firefox ] ; then
   unalias firefox

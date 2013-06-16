@@ -37,7 +37,6 @@ function dock-switch() {
 }
 
 # Download a file and open it in Preview
-
 function prevcurl() {
   if [ ! $(uname) = "Darwin" ]
   then
@@ -45,4 +44,12 @@ function prevcurl() {
     return 1
   fi
   curl "$*" | open -fa "Preview"
+}
+
+# Show / Hide Files in Finder.
+# Expects a boolean value.
+function hiddentoggler() {
+  toggle="defaults write com.apple.finder AppleShowAllFiles -bool $1"
+  eval $toggle
+  killall Finder
 }
