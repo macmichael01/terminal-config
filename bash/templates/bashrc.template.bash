@@ -101,18 +101,21 @@ export PATH="/usr/local/bin:$PATH"      # So that Homebrew does not complain
 export PATH="$HOME/bin:$PATH"
 export PATH=$PATH:~/.gem/ruby/1.8/bin   # Add rvm gems to the path
 export PATH=$PATH:$(which nginx)        # Add nginx to the path
+export PATH="$HOME/Library/Android/sdk/tools:$PATH"          # Android SDK Tools
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH" # Android SDK Tools
+export PATH="$PYENV_ROOT/bin:$PATH"
 export GIT_HOSTING='git@git.domain.com' # I use this for private repos.
 export IRC_CLIENT='irssi'               # Console based IRC client.
 export NGINX_PATH=$(which nginx)        # Set the path nginx
 export TODO="t"                         # For use with todo.txt-cli
 
 export EDITOR="vim" # TODO: Pick based on os.
-export EDITOR="/usr/bin/mate -w" # Set my editor and git editor
+export EDITOR="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl -w" # Set my editor and git editor
 export LESS="-X -M -E -R"
 export PAGER="less"
 export VIM="$(which vim)"
 export VISUAL="vim"
-export GIT_EDITOR='/usr/bin/mate -w'
+export GIT_EDITOR='/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl -w'
 export SVN_EDITOR="vim"
 export PSQL_EDITOR='vim -c"set syntax=sql"'
 
@@ -148,9 +151,24 @@ export RBENV_THEME_PROMPT_SUFFIX='|'
 export RBFU_THEME_PROMPT_PREFIX=' |'
 export RBFU_THEME_PROMPT_SUFFIX='|'
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Android SDK
+export ANDROID_SDK=$HOME/Android/sdk
+
+# AWS Auto complete
+complete -C aws_completer aws
+
+# PyENV
+export PYENV_ROOT="$HOME/.pyenv"
+
 export PREVIEW="less"
-[ -s /usr/bin/gloobus-preview ] && PREVIEW="gloobus-preview"
-[ -s /Applications/Preview.app ] && PREVIEW="/Applications/Preview.app"
+
 unset MAILCHECK # Don't check mail when opening terminal.
 
 if [[ $PROMPT ]]; then
